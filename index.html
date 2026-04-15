@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trovia — India's Most Curated Store</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #F9F6F0;
+    --warm-white: #FDFBF7;
+    --charcoal: #1C1C1C;
+    --muted: #6B6560;
+    --accent: #B85C38;
+    --gold: #C9973A;
+    --sage: #7C8C6E;
+    --light-border: #E8E2D9;
+  }
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav {
+    background: var(--charcoal);
+    color: white;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-size: 24px;
+    letter-spacing: 6px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .nav-tagline {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #AAA;
+    font-family: 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .nav-badge {
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    font-family: 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--charcoal);
+    color: white;
+    padding: 80px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 60% 50%, rgba(200,150,80,0.12) 0%, transparent 70%);
+  }
+  .hero-eyebrow {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 17px;
+    color: #BBB;
+    max-width: 580px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-size: 38px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 5px;
+  }
+  .hero-stat .label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  /* CONCEPT STRIP */
+  .concept-strip {
+    background: var(--cream);
+    padding: 60px 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    border-bottom: 1px solid var(--light-border);
+  }
+  .concept-item {
+    padding: 32px;
+    background: white;
+    border: 1px solid var(--light-border);
+  }
+  .concept-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .concept-item h3 {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .concept-item p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 400;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    padding: 64px 60px 36px;
+    border-bottom: 1px solid var(--light-border);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .section-header .eyebrow {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .section-header h2 {
+    font-size: 38px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  .section-header .section-desc {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 380px;
+    text-align: right;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  /* PRODUCT GRID */
+  .product-section { background: var(--warm-white); padding-bottom: 60px; }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--light-border);
+    margin: 0;
+  }
+  .product-card {
+    background: white;
+    padding: 30px 26px;
+    transition: background 0.2s;
+  }
+  .product-card:hover { background: var(--cream); }
+  .product-card .category-tag {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: #FDF0EB;
+    padding: 3px 9px;
+    display: inline-block;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .product-card .brand {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    color: var(--charcoal);
+  }
+  .product-card .product-name {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    line-height: 1.55;
+    font-weight: 400;
+  }
+  .price-block { display: flex; align-items: center; gap: 8px; margin-top: auto; }
+  .price-store {
+    font-size: 20px;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+  .price-mrp {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: #AAA;
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+  .save-badge {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    background: var(--sage);
+    color: white;
+    padding: 3px 8px;
+    margin-left: auto;
+    font-weight: 500;
+  }
+  .product-card .hook {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: var(--sage);
+    font-style: italic;
+    margin-top: 10px;
+    font-weight: 400;
+  }
+
+  /* HIGHLIGHT CARD */
+  .highlight-card {
+    background: var(--charcoal);
+    color: white;
+    padding: 40px 32px;
+  }
+  .highlight-card .category-tag {
+    background: rgba(255,255,255,0.1);
+    color: var(--gold) !important;
+  }
+  .highlight-card .brand { color: white; }
+  .highlight-card .product-name { color: #AAA; }
+  .highlight-card .price-store { color: var(--gold); }
+  .highlight-card .hook { color: #999; }
+
+  /* 3-COL SECTION */
+  .product-grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+  /* SECTION ALT BG */
+  .product-section-alt { background: var(--cream); padding-bottom: 60px; }
+  .product-section-alt .section-header { background: var(--cream); }
+
+  /* TREASURE HUNT */
+  .treasure-section {
+    background: var(--charcoal);
+    color: white;
+    padding: 80px 60px;
+    text-align: center;
+  }
+  .treasure-section .eyebrow {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .treasure-section h2 {
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  .treasure-section h2 em { font-style: italic; color: var(--gold); }
+  .treasure-section p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    color: #AAA;
+    max-width: 560px;
+    margin: 0 auto 50px;
+    line-height: 1.9;
+    font-weight: 300;
+  }
+  .treasure-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 840px;
+    margin: 0 auto;
+  }
+  .treasure-item {
+    background: rgba(255,255,255,0.04);
+    padding: 32px 26px;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .treasure-item .t-icon { font-size: 30px; margin-bottom: 14px; }
+  .treasure-item h4 {
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .treasure-item p {
+    font-size: 13px;
+    color: #888;
+    margin: 0;
+    line-height: 1.65;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+  }
+
+  /* MEMBERSHIP */
+  .membership-section {
+    background: white;
+    padding: 80px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .membership-left h2 {
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .membership-left h2 em { font-style: italic; color: var(--accent); }
+  .membership-left p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-weight: 400;
+  }
+  .membership-price {
+    font-size: 44px;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .membership-price span {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .membership-right {
+    background: var(--cream);
+    padding: 40px;
+    border: 1px solid var(--light-border);
+  }
+  .membership-right h4 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .benefit-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+  .benefit-icon { font-size: 20px; flex-shrink: 0; }
+  .benefit-text h5 {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .benefit-text p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+    font-weight: 400;
+  }
+
+  /* COMPARISON */
+  .comparison-section {
+    background: var(--cream);
+    padding: 80px 60px;
+  }
+  .comparison-section .eyebrow {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .comparison-section h2 {
+    font-size: 38px;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 48px;
+  }
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .comp-table th {
+    background: var(--charcoal);
+    color: white;
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  .comp-table th.highlight-col { background: var(--accent); }
+  .comp-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--light-border);
+    color: var(--muted);
+    vertical-align: middle;
+  }
+  .comp-table td.highlight-col {
+    background: #FDF5F2;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+  .comp-table tr:nth-child(even) td { background: white; }
+  .comp-table tr:nth-child(even) td.highlight-col { background: #FEF8F5; }
+  .check { color: var(--sage); font-size: 16px; }
+  .cross { color: #CCC; font-size: 16px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    color: #666;
+    padding: 40px 60px;
+    text-align: center;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  footer span { color: #444; margin: 0 10px; }
+
+  /* BRAND STRIP */
+  .featured-strip {
+    background: var(--charcoal);
+    padding: 20px 60px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .featured-strip-item {
+    padding: 12px 28px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .featured-strip-item .fs-brand {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .featured-strip-item .fs-cat {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    color: #666;
+    margin-top: 3px;
+    font-weight: 400;
+  }
+
+  /* SPECIAL BADGE */
+  .new-badge {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    background: var(--gold);
+    color: white;
+    padding: 3px 8px;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .concept-strip { grid-template-columns: 1fr; }
+    .membership-section { grid-template-columns: 1fr; }
+    .treasure-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 36px; }
+    .hero-stats { flex-wrap: wrap; gap: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <div class="nav-logo">Trovia</div>
+    <div class="nav-tagline">Curated. Rare. Surprisingly Affordable.</div>
+  </div>
+  <div class="nav-badge">Concept Preview — Not for Distribution</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Opening Soon · A New Kind of Store</div>
+  <h1>The things you love,<br>at prices that <em>shouldn't</em> exist.</h1>
+  <p class="hero-sub">Trovia is a new kind of store. Every product on our shelves has been hand-picked because it's genuinely the best in its category — and every price is well below what you'd pay anywhere else.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="num">Up to 40%</span><span class="label">less than market price</span></div>
+    <div class="hero-stat"><span class="num">Fresh drops</span><span class="label">every few weeks</span></div>
+    <div class="hero-stat"><span class="num">Beauty · Fashion</span><span class="label">Food · Home & more</span></div>
+    <div class="hero-stat"><span class="num">Members</span><span class="label">always go first</span></div>
+  </div>
+</div>
+
+<!-- BRAND STRIP -->
+<div class="featured-strip">
+  <div class="featured-strip-item"><div class="fs-brand">Olaplex</div><div class="fs-cat">Hair Care</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Kérastase</div><div class="fs-cat">Hair Care</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Dyson</div><div class="fs-cat">Beauty Appliances</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Sol de Janeiro</div><div class="fs-cat">Body Care</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Coach</div><div class="fs-cat">Handbags</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Longchamp</div><div class="fs-cat">Handbags</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">New Balance</div><div class="fs-cat">Sneakers</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">TAG Heuer</div><div class="fs-cat">Watches</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Ray-Ban</div><div class="fs-cat">Eyewear</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Mason & Co</div><div class="fs-cat">Chocolates</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Chilgoza · Mamra Almonds</div><div class="fs-cat">Premium Nuts</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Kashmiri Saffron</div><div class="fs-cat">Spices</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Forest Essentials</div><div class="fs-cat">Bath &amp; Body</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">GHD · Braun IPL</div><div class="fs-cat">Beauty Appliances</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Adidas Samba · NB 9060</div><div class="fs-cat">Sneakers</div></div>
+  <div class="featured-strip-item"><div class="fs-brand">Seiko · Hamilton</div><div class="fs-cat">Watches</div></div>
+</div>
+
+<!-- CONCEPT PILLARS -->
+<div class="concept-strip">
+  <div class="concept-item">
+    <span class="concept-icon">✦</span>
+    <h3>Relentless Curation</h3>
+    <p>Every product on our shelves has been researched, tested and benchmarked. If it's here, it's the best version of that thing. We do the work so you don't have to overthink.</p>
+  </div>
+  <div class="concept-item">
+    <span class="concept-icon">◈</span>
+    <h3>Lowest Price, Period</h3>
+    <p>We go straight to the source and cut out the middlemen. That means you pay less than Amazon, Nykaa, or any specialty retailer — often by 25 to 40%. No catch.</p>
+  </div>
+  <div class="concept-item">
+    <span class="concept-icon">◇</span>
+    <h3>The Treasure Hunt</h3>
+    <p>Our stock rotates. Products arrive, sell through, and make way for new finds. Members get first access. The store is different every time you visit — and that's exactly the point.</p>
+  </div>
+</div>
+
+
+<!-- ───────── HANDBAGS, WATCHES & EYEWEAR ───────── -->
+<div class="product-section">
+  <div class="section-header">
+    <div class="left-block">
+      <div class="eyebrow">Fashion Accessories</div>
+      <h2>Handbags, Watches & Eyewear</h2>
+    </div>
+    <div class="section-desc">International brands you know and want — bought in curated quantities, rotated seasonally. Real brands, real savings, no grey market.</div>
+  </div>
+  <div class="product-grid">
+
+    <div class="product-card highlight-card">
+      <div class="new-badge">Select Stock — Rotating</div>
+      <span class="category-tag">Handbags</span>
+      <div class="brand">Longchamp</div>
+      <div class="product-name">Le Pliage Original Medium Tote — Curated colourways, classic silhouette</div>
+      <div class="price-block">
+        <span class="price-store">₹18,500</span>
+        <span class="price-mrp">₹28,000+</span>
+        <span class="save-badge">Save 33%</span>
+      </div>
+      <div class="hook">The Parisian everyday bag. Yours at 33% off market price.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Handbags</span>
+      <div class="brand">Coach</div>
+      <div class="product-name">Tabby Shoulder Bag 26 — Supple pebble leather, iconic turnlock</div>
+      <div class="price-block">
+        <span class="price-store">₹28,000</span>
+        <span class="price-mrp">₹42,000+</span>
+        <span class="save-badge">Save 33%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Handbags</span>
+      <div class="brand">Tory Burch</div>
+      <div class="product-name">Fleming Soft Small Convertible Shoulder Bag — Day to evening</div>
+      <div class="price-block">
+        <span class="price-store">₹26,000</span>
+        <span class="price-mrp">₹38,000+</span>
+        <span class="save-badge">Save 32%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Handbags</span>
+      <div class="brand">Kate Spade</div>
+      <div class="product-name">Sam Icon Medium Satchel — Structured, colourful, instantly recognisable</div>
+      <div class="price-block">
+        <span class="price-store">₹18,000</span>
+        <span class="price-mrp">₹28,000+</span>
+        <span class="save-badge">Save 36%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Handbags</span>
+      <div class="brand">Marc Jacobs</div>
+      <div class="product-name">The Tote Bag — Canvas with leather trim. The bag everyone's carrying.</div>
+      <div class="price-block">
+        <span class="price-store">₹22,000</span>
+        <span class="price-mrp">₹32,000+</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+      <div class="hook">Sold out everywhere. Back at Trovia for a limited run.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Handbags</span>
+      <div class="brand">Furla</div>
+      <div class="product-name">Metropolis Mini Crossbody — Compact Italian leather, daily carry</div>
+      <div class="price-block">
+        <span class="price-store">₹20,000</span>
+        <span class="price-mrp">₹30,000+</span>
+        <span class="save-badge">Save 33%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Watches</span>
+      <div class="brand">TAG Heuer</div>
+      <div class="product-name">Aquaracer 300M Quartz — Swiss certified, steel bracelet, 38mm</div>
+      <div class="price-block">
+        <span class="price-store">₹98,000</span>
+        <span class="price-mrp">₹1,40,000+</span>
+        <span class="save-badge">Save 30%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Watches</span>
+      <div class="brand">Tissot</div>
+      <div class="product-name">Le Locle Powermatic 80 — Swiss automatic, sapphire crystal, dress watch</div>
+      <div class="price-block">
+        <span class="price-store">₹24,500</span>
+        <span class="price-mrp">₹36,000+</span>
+        <span class="save-badge">Save 32%</span>
+      </div>
+      <div class="hook">Swiss automatic movement at an everyday watch price.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Watches</span>
+      <div class="brand">Seiko</div>
+      <div class="product-name">Presage Style 60s Automatic — Japanese craftsmanship, enamel dial</div>
+      <div class="price-block">
+        <span class="price-store">₹18,500</span>
+        <span class="price-mrp">₹26,000+</span>
+        <span class="save-badge">Save 29%</span>
+      </div>
+      <div class="hook">Japanese watchmaking at its most beautiful. Far better value than the Swiss alternatives.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Watches</span>
+      <div class="brand">Hamilton</div>
+      <div class="product-name">Khaki Field Automatic — Military heritage, 38mm, canvas strap</div>
+      <div class="price-block">
+        <span class="price-store">₹28,000</span>
+        <span class="price-mrp">₹40,000+</span>
+        <span class="save-badge">Save 30%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Eyewear</span>
+      <div class="brand">Ray-Ban</div>
+      <div class="product-name">Wayfarer RB2140 + Aviator Classic RB3025 — Curated seasonal colourways</div>
+      <div class="price-block">
+        <span class="price-store">₹8,500</span>
+        <span class="price-mrp">₹13,000+</span>
+        <span class="save-badge">Save 35%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Eyewear</span>
+      <div class="brand">Tom Ford</div>
+      <div class="product-name">Signature Sunglasses — FT series, select frames, men & women</div>
+      <div class="price-block">
+        <span class="price-store">₹16,500</span>
+        <span class="price-mrp">₹24,000+</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Eyewear</span>
+      <div class="brand">Armani</div>
+      <div class="product-name">Emporio Armani Frames — Optical + sunglasses, seasonal edit, men & women</div>
+      <div class="price-block">
+        <span class="price-store">₹11,000</span>
+        <span class="price-mrp">₹16,000+</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Eyewear</span>
+      <div class="brand">Prada</div>
+      <div class="product-name">PR series Sunglasses — Curated unisex styles, seasonal colourways</div>
+      <div class="price-block">
+        <span class="price-store">₹18,000</span>
+        <span class="price-mrp">₹26,000+</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+      <div class="hook">Prada without the Prada price. Limited units per drop.</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ───────── BEAUTY APPLIANCES ───────── -->
+<div class="product-section-alt">
+  <div class="section-header" style="background: var(--cream);">
+    <div class="left-block">
+      <div class="eyebrow">Beauty Appliances</div>
+      <h2>The Tools That Transform Your Routine</h2>
+    </div>
+    <div class="section-desc">Dyson, GHD, NuFACE, Braun, Philips — the devices your friends are buying abroad, now available here and priced better than anywhere you've looked.</div>
+  </div>
+  <div class="product-grid product-grid-3">
+
+    <div class="product-card highlight-card">
+      <div class="new-badge">Rotating — Limited Units</div>
+      <span class="category-tag">Hair Styling</span>
+      <div class="brand">Dyson</div>
+      <div class="product-name">Airwrap Multi-Styler Origin — Curls, waves & blow-dry without extreme heat</div>
+      <div class="price-block">
+        <span class="price-store">₹38,500</span>
+        <span class="price-mrp">₹49,990</span>
+        <span class="save-badge">Save 23%</span>
+      </div>
+      <div class="hook">The cult styler. 5–8 units per arrival. First come, first served.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Hair Styling</span>
+      <div class="brand">Dyson</div>
+      <div class="product-name">Supersonic Hair Dryer — Intelligent heat control, low-damage, quiet motor</div>
+      <div class="price-block">
+        <span class="price-store">₹26,500</span>
+        <span class="price-mrp">₹34,900</span>
+        <span class="save-badge">Save 24%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Hair Styling</span>
+      <div class="brand">GHD</div>
+      <div class="product-name">Platinum+ Smart Straightener — Adaptive heat technology, less breakage</div>
+      <div class="price-block">
+        <span class="price-store">₹16,500</span>
+        <span class="price-mrp">₹22,000</span>
+        <span class="save-badge">Save 25%</span>
+      </div>
+      <div class="hook">The straightener stylists use in their own homes.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Hair Removal</span>
+      <div class="brand">Braun</div>
+      <div class="product-name">Silk-expert Pro 5 IPL — SensoAdapt skin sensor, permanent hair reduction</div>
+      <div class="price-block">
+        <span class="price-store">₹24,000</span>
+        <span class="price-mrp">₹32,000</span>
+        <span class="save-badge">Save 25%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Hair Removal</span>
+      <div class="brand">Philips</div>
+      <div class="product-name">Lumea 9000 Series IPL — Cordless, SenseIQ technology, full body kit</div>
+      <div class="price-block">
+        <span class="price-store">₹28,500</span>
+        <span class="price-mrp">₹38,000</span>
+        <span class="save-badge">Save 25%</span>
+      </div>
+      <div class="hook">The at-home IPL editors consistently rank first for ease and results.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Hair Removal</span>
+      <div class="brand">Braun</div>
+      <div class="product-name">Silk-épil 9 Epilator — 40 tweezers, wide head, wet & dry use</div>
+      <div class="price-block">
+        <span class="price-store">₹8,500</span>
+        <span class="price-mrp">₹12,000</span>
+        <span class="save-badge">Save 29%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Skin Care Devices</span>
+      <div class="brand">FOREO</div>
+      <div class="product-name">UFO Mini — LED + heat-driven mask treatment in 90 seconds</div>
+      <div class="price-block">
+        <span class="price-store">₹8,500</span>
+        <span class="price-mrp">₹11,000</span>
+        <span class="save-badge">Save 23%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Skin Care Devices</span>
+      <div class="brand">NuFACE</div>
+      <div class="product-name">Trinity Microcurrent Device — Non-invasive lifting, 5 minutes a day</div>
+      <div class="price-block">
+        <span class="price-store">₹22,000</span>
+        <span class="price-mrp">₹30,000+</span>
+        <span class="save-badge">Save 27%</span>
+      </div>
+      <div class="hook">The at-home facelift editors swear by. Results in 2 weeks.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Skin Care Devices</span>
+      <div class="brand">Omnilux</div>
+      <div class="product-name">Contour Face LED Mask — Clinically proven red + near-infrared light therapy</div>
+      <div class="price-block">
+        <span class="price-store">₹32,000</span>
+        <span class="price-mrp">₹45,000+</span>
+        <span class="save-badge">Save 29%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Oral Care</span>
+      <div class="brand">Philips</div>
+      <div class="product-name">Sonicare DiamondClean 9000 — Premium sonic brush, 4 modes, charging glass</div>
+      <div class="price-block">
+        <span class="price-store">₹8,000</span>
+        <span class="price-mrp">₹11,500</span>
+        <span class="save-badge">Save 30%</span>
+      </div>
+      <div class="hook">The toothbrush dentists actually use themselves.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Body Recovery</span>
+      <div class="brand">Theragun</div>
+      <div class="product-name">Mini Percussive Massager — 150-minute battery, 3 attachments, travel-ready</div>
+      <div class="price-block">
+        <span class="price-store">₹15,500</span>
+        <span class="price-mrp">₹20,990</span>
+        <span class="save-badge">Save 26%</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ───────── BEAUTY & PERSONAL CARE ───────── -->
+<div class="product-section">
+  <div class="section-header">
+    <div class="left-block">
+      <div class="eyebrow">Beauty & Personal Care</div>
+      <h2>Skin, Hair & Body</h2>
+    </div>
+    <div class="section-desc">The brands your dermatologist recommends and the salon names you've always wanted to try — all at 20–40% less than you'd pay on Nykaa or Amazon.</div>
+  </div>
+  <div class="product-grid">
+
+    <div class="product-card highlight-card">
+      <div class="new-badge">Hero SKU</div>
+      <span class="category-tag">Hair Care</span>
+      <div class="brand">Olaplex</div>
+      <div class="product-name">No.4 Bond Maintenance Shampoo + No.5 Conditioner Set</div>
+      <div class="price-block">
+        <span class="price-store">₹1,950</span>
+        <span class="price-mrp">₹2,600</span>
+        <span class="save-badge">Save 25%</span>
+      </div>
+      <div class="hook">The repair system stylists swear by. Not stocked in most Indian stores.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Hair Care</span>
+      <div class="brand">Kérastase</div>
+      <div class="product-name">Genesis Bain Hydra-Fortifiant Anti-Hairfall Shampoo + Conditioner</div>
+      <div class="price-block">
+        <span class="price-store">₹2,900</span>
+        <span class="price-mrp">₹4,097</span>
+        <span class="save-badge">Save 29%</span>
+      </div>
+      <div class="hook">Kérastase at Trovia — same product, real savings.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Hair Care</span>
+      <div class="brand">Moroccanoil</div>
+      <div class="product-name">Treatment Original Hair Oil (100ml) — The finishing oil that started it all</div>
+      <div class="price-block">
+        <span class="price-store">₹1,650</span>
+        <span class="price-mrp">₹2,200</span>
+        <span class="save-badge">Save 25%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Hair Care</span>
+      <div class="brand">Wella Professionals</div>
+      <div class="product-name">Ultimate Repair Shampoo + Conditioner — Salon-grade bond repair for damaged hair</div>
+      <div class="price-block">
+        <span class="price-store">₹1,600</span>
+        <span class="price-mrp">₹2,200</span>
+        <span class="save-badge">Save 27%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Hair Care</span>
+      <div class="brand">indē wild</div>
+      <div class="product-name">Champi Hair Oil — The Ayurvedic scalp ritual going viral for all the right reasons</div>
+      <div class="price-block">
+        <span class="price-store">₹680</span>
+        <span class="price-mrp">₹950</span>
+        <span class="save-badge">Save 28%</span>
+      </div>
+      <div class="hook">India's most talked-about hair oil right now.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Skin Care</span>
+      <div class="brand">minimalist</div>
+      <div class="product-name">Niacinamide 10% + Zinc 1% Serum · Vitamin C 10% Brightening Serum Bundle</div>
+      <div class="price-block">
+        <span class="price-store">₹580</span>
+        <span class="price-mrp">₹850</span>
+        <span class="save-badge">Save 32%</span>
+      </div>
+      <div class="hook">India's most research-backed actives brand, now under one roof.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Skin Care</span>
+      <div class="brand">Bare Anatomy</div>
+      <div class="product-name">Advanced Hair Growth Serum + Damage Repair Shampoo — The dermat-approved duo</div>
+      <div class="price-block">
+        <span class="price-store">₹950</span>
+        <span class="price-mrp">₹1,380</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Body Care</span>
+      <div class="brand">Sol de Janeiro</div>
+      <div class="product-name">Brazilian Bum Bum Body Cream (240ml) — The scented body cream the internet won't stop talking about</div>
+      <div class="price-block">
+        <span class="price-store">₹2,200</span>
+        <span class="price-mrp">₹3,100</span>
+        <span class="save-badge">Save 29%</span>
+      </div>
+      <div class="hook">Now stocked in India. At less than you'd pay on any international site.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Body Care</span>
+      <div class="brand">L'Occitane</div>
+      <div class="product-name">Almond Shower Oil + Shea Butter Soap — The Provence duo worth gifting yourself</div>
+      <div class="price-block">
+        <span class="price-store">₹1,980</span>
+        <span class="price-mrp">₹2,750</span>
+        <span class="save-badge">Save 28%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Body Care</span>
+      <div class="brand">MCaffeine</div>
+      <div class="product-name">Exfoliating Coffee Body Scrub — Deep tan removal and skin-smoothing in one step</div>
+      <div class="price-block">
+        <span class="price-store">₹350</span>
+        <span class="price-mrp">₹499</span>
+        <span class="save-badge">Save 30%</span>
+      </div>
+      <div class="hook">India's cult body scrub. Visible results after the first use.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Body Care</span>
+      <div class="brand">Cetaphil · CeraVe</div>
+      <div class="product-name">Daily Moisturising Lotion Duo — The dermatologist-recommended skin barrier basics</div>
+      <div class="price-block">
+        <span class="price-store">₹980</span>
+        <span class="price-mrp">₹1,400</span>
+        <span class="save-badge">Save 30%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Fragrance</span>
+      <div class="brand">Forest Essentials</div>
+      <div class="product-name">Silkening Shower Wash + Indian Rose Absolute Eau de Parfum</div>
+      <div class="price-block">
+        <span class="price-store">₹2,490</span>
+        <span class="price-mrp">₹3,400</span>
+        <span class="save-badge">Save 27%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Fragrance</span>
+      <div class="brand">Kama Ayurveda</div>
+      <div class="product-name">Bringaras Scalp & Hair Oil + Kokum & Almond Body Butter — The luxury Ayurvedic edit</div>
+      <div class="price-block">
+        <span class="price-store">₹1,680</span>
+        <span class="price-mrp">₹2,400</span>
+        <span class="save-badge">Save 30%</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ───────── FOOTWEAR ───────── -->
+<div class="product-section-alt">
+  <div class="section-header" style="background: var(--cream);">
+    <div class="left-block">
+      <div class="eyebrow">Footwear & Sneakers</div>
+      <h2>The Shoes Worth Wearing</h2>
+    </div>
+    <div class="section-desc">Everyday heels and sandals from names you trust, plus the sneakers everyone wants — stocked seasonally in the colourways that actually sell out.</div>
+  </div>
+  <div class="product-grid product-grid-3">
+
+    <div class="product-card highlight-card">
+      <div class="new-badge">Rotating — Limited Sizes</div>
+      <span class="category-tag">Sneakers</span>
+      <div class="brand">New Balance</div>
+      <div class="product-name">1906R Metallic + 9060 — Two of this season's most-wanted silhouettes</div>
+      <div class="price-block">
+        <span class="price-store">₹10,500</span>
+        <span class="price-mrp">₹14,500+</span>
+        <span class="save-badge">Save 28%</span>
+      </div>
+      <div class="hook">The sneakers that sold out everywhere else. A few pairs per size.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Sneakers</span>
+      <div class="brand">Nike</div>
+      <div class="product-name">Dunk Low (seasonal colourways) + Air Force 1 '07 Classic White</div>
+      <div class="price-block">
+        <span class="price-store">₹7,500</span>
+        <span class="price-mrp">₹10,500+</span>
+        <span class="save-badge">Save 29%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Sneakers</span>
+      <div class="brand">Adidas</div>
+      <div class="product-name">Samba OG + Campus 00s — The two silhouettes defining street style right now</div>
+      <div class="price-block">
+        <span class="price-store">₹7,200</span>
+        <span class="price-mrp">₹10,000+</span>
+        <span class="save-badge">Save 28%</span>
+      </div>
+      <div class="hook">The shoes of the moment. Stocked in the exact colourways people want.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Sneakers</span>
+      <div class="brand">On Running</div>
+      <div class="product-name">Cloud 5 + Cloudmonster — Swiss running comfort meets everyday lifestyle</div>
+      <div class="price-block">
+        <span class="price-store">₹12,000</span>
+        <span class="price-mrp">₹16,500+</span>
+        <span class="save-badge">Save 27%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Sneakers</span>
+      <div class="brand">HOKA</div>
+      <div class="product-name">Bondi 8 + Clifton 9 — Maximum cushioning, the comfort sneaker for people who walk a lot</div>
+      <div class="price-block">
+        <span class="price-store">₹11,500</span>
+        <span class="price-mrp">₹16,000+</span>
+        <span class="save-badge">Save 28%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Sneakers</span>
+      <div class="brand">ASICS</div>
+      <div class="product-name">Gel-1130 + Gel-Kayano 14 — The retro runners of the season</div>
+      <div class="price-block">
+        <span class="price-store">₹8,500</span>
+        <span class="price-mrp">₹12,000+</span>
+        <span class="save-badge">Save 29%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Women Footwear</span>
+      <div class="brand">Steve Madden</div>
+      <div class="product-name">Heeled Mule + Ankle Strap Sandal — Curated seasonal styles</div>
+      <div class="price-block">
+        <span class="price-store">₹5,200</span>
+        <span class="price-mrp">₹8,500+</span>
+        <span class="save-badge">Save 39%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Women Footwear</span>
+      <div class="brand">Aldo</div>
+      <div class="product-name">Pumps + Strappy Sandals — On-trend seasonal edit, sizes 3–6</div>
+      <div class="price-block">
+        <span class="price-store">₹3,800</span>
+        <span class="price-mrp">₹6,500+</span>
+        <span class="save-badge">Save 41%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Women Footwear</span>
+      <div class="brand">Charles & Keith</div>
+      <div class="product-name">Structured Tote Flats + Block-Heel Sandals — The accessible luxury edit</div>
+      <div class="price-block">
+        <span class="price-store">₹3,200</span>
+        <span class="price-mrp">₹5,500+</span>
+        <span class="save-badge">Save 42%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Women Footwear</span>
+      <div class="brand">Fizzy Goblet</div>
+      <div class="product-name">Embroidered Juttis + Block Heels — India's best-loved handcrafted footwear label</div>
+      <div class="price-block">
+        <span class="price-store">₹2,200</span>
+        <span class="price-mrp">₹3,500+</span>
+        <span class="save-badge">Save 37%</span>
+      </div>
+      <div class="hook">Sold out on their own website. Back in stock at Trovia.</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ───────── GOURMET FOOD ───────── -->
+<div class="product-section">
+  <div class="section-header">
+    <div class="left-block">
+      <div class="eyebrow">Gourmet Edibles</div>
+      <h2>Food Worth Caring About</h2>
+    </div>
+    <div class="section-desc">Premium chocolates, specialty coffees, artisanal snacks, and India's most carefully sourced nuts — all priced so well you'll stock up every visit.</div>
+  </div>
+  <div class="product-grid">
+
+    <div class="product-card highlight-card">
+      <div class="new-badge">Made for Trovia · Exclusive</div>
+      <span class="category-tag">Coffee</span>
+      <div class="brand">Trovia Reserve</div>
+      <div class="product-name">Freeze-Dried 100% Arabica — Vanilla, Hazelnut, Cinnamon, Caramel (4 flavours)</div>
+      <div class="price-block">
+        <span class="price-store">₹380 / 100g</span>
+        <span class="price-mrp">₹700+</span>
+        <span class="save-badge">Save 45%</span>
+      </div>
+      <div class="hook">Better than anything at this price. Made exclusively for Trovia.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Chocolates</span>
+      <div class="brand">Mason & Co</div>
+      <div class="product-name">Artisan Dark Chocolate Bars — Bean to bar, Auroville. Pure cocoa butter, nothing fake.</div>
+      <div class="price-block">
+        <span class="price-store">₹290 / 60g</span>
+        <span class="price-mrp">₹385+</span>
+        <span class="save-badge">Save 25%</span>
+      </div>
+      <div class="hook">India's finest bean-to-bar. No palm oil, no artificial flavours.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Chocolates</span>
+      <div class="brand">Rare Cocoa</div>
+      <div class="product-name">Single-Origin Dark Bars — Small-batch, ethically sourced, rotating origin stories</div>
+      <div class="price-block">
+        <span class="price-store">₹260 / 60g</span>
+        <span class="price-mrp">₹360+</span>
+        <span class="save-badge">Save 28%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Premium Nuts</span>
+      <div class="brand">Trovia Seasonal</div>
+      <div class="product-name">This Month's Nut Box — W180 Cashews · Ahmad Aghaei Pistachios · Macadamia · Himalayan Chilgoza</div>
+      <div class="price-block">
+        <span class="price-store">₹1,100 / 250g</span>
+        <span class="price-mrp">₹1,600+</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+      <div class="hook">Sourced fresh, rotated every 6–8 weeks with the season.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Seasoned Nuts</span>
+      <div class="brand">Trovia Kitchen</div>
+      <div class="product-name">Truffle Parmesan Cashews · Dark Chocolate Almonds · Wasabi Sesame Cashews · Cinnamon Sugar Almonds</div>
+      <div class="price-block">
+        <span class="price-store">₹480 / 150g</span>
+        <span class="price-mrp">₹700+</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Nut Butters</span>
+      <div class="brand">The Butternut Co.</div>
+      <div class="product-name">Stone-Ground Almond Butter + Cashew Butter — No sugar, no palm oil, just the nut</div>
+      <div class="price-block">
+        <span class="price-store">₹480 / 200g</span>
+        <span class="price-mrp">₹680+</span>
+        <span class="save-badge">Save 29%</span>
+      </div>
+      <div class="hook">The nut butter that ruins you for everything else.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Snacks</span>
+      <div class="brand">4700BC</div>
+      <div class="product-name">Gourmet Popcorn — Sriracha, Himalayan Salt, Pepper & Herbs, Dark Chocolate (seasonal drop)</div>
+      <div class="price-block">
+        <span class="price-store">₹180</span>
+        <span class="price-mrp">₹260+</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Snacks</span>
+      <div class="brand">Atom Eats · Urban Platter</div>
+      <div class="product-name">Gourmet snack drop — protein pretzels, veggie crisps, seaweed chips, makhana</div>
+      <div class="price-block">
+        <span class="price-store">₹180 – ₹350</span>
+        <span class="price-mrp">₹250 – ₹500</span>
+        <span class="save-badge">Save 25–30%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Pantry Staples</span>
+      <div class="brand">Curated Selection</div>
+      <div class="product-name">Bilona Churned Ghee · High-Oleic Sunflower Oil · Cold-Pressed Extra Virgin Olive Oil</div>
+      <div class="price-block">
+        <span class="price-store">From ₹420</span>
+        <span class="price-mrp">₹600+</span>
+        <span class="save-badge">Save 28%</span>
+      </div>
+      <div class="hook">The cooking oils your body actually deserves.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Spices</span>
+      <div class="brand">Trovia Spice Bar</div>
+      <div class="product-name">Kashmiri Saffron Grade I · Pure Hing Resin · Vanilla Pods (Madagascar) · True Ceylon Cinnamon</div>
+      <div class="price-block">
+        <span class="price-store">From ₹380</span>
+        <span class="price-mrp">Up to 40% off market</span>
+        <span class="save-badge">Premium Grade</span>
+      </div>
+      <div class="hook">Spices that will ruin you for the ordinary ones. Sourced directly at origin.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Bakery & Baking</span>
+      <div class="brand">Trovia Pantry</div>
+      <div class="product-name">Baking Pre-mixes — Brownie, Muffin, Cake, Cookie. Just add butter and eggs.</div>
+      <div class="price-block">
+        <span class="price-store">₹280 / pack</span>
+        <span class="price-mrp">₹420+</span>
+        <span class="save-badge">Save 33%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Tea</span>
+      <div class="brand">Curated Selection</div>
+      <div class="product-name">Single-estate Darjeeling · Kashmiri Kahwa · Matcha Grade A · Butterfly Pea Flower</div>
+      <div class="price-block">
+        <span class="price-store">From ₹350</span>
+        <span class="price-mrp">Typically ₹500+</span>
+        <span class="save-badge">Save 25–35%</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ───────── HOME & APPLIANCES ───────── -->
+<div class="product-section-alt">
+  <div class="section-header" style="background: var(--cream);">
+    <div class="left-block">
+      <div class="eyebrow">Home, Kitchen & Gadgets</div>
+      <h2>Things That Make Life Better</h2>
+    </div>
+    <div class="section-desc">Appliances and gadgets that genuinely earn their place at home — thoughtfully chosen, not just popular. Rotates seasonally so there's always something new to discover.</div>
+  </div>
+  <div class="product-grid product-grid-3">
+
+    <div class="product-card highlight-card">
+      <div class="new-badge">Monsoon Special · Limited</div>
+      <span class="category-tag">Home Appliances</span>
+      <div class="brand">Dehumidifier</div>
+      <div class="product-name">Compact 1.5L Bedroom Dehumidifier — Prevents monsoon mold, whisper-quiet, auto shut-off</div>
+      <div class="price-block">
+        <span class="price-store">₹5,800</span>
+        <span class="price-mrp">₹8,500+</span>
+        <span class="save-badge">Save 32%</span>
+      </div>
+      <div class="hook">The appliance Mumbai & Delhi homes don't know they need yet.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Smart Home</span>
+      <div class="brand">Air Quality Monitor</div>
+      <div class="product-name">PM2.5 + CO2 + VOC Sensor — Real-time app dashboard. Know what you're breathing.</div>
+      <div class="price-block">
+        <span class="price-store">₹4,200</span>
+        <span class="price-mrp">₹6,500+</span>
+        <span class="save-badge">Save 35%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Home Care</span>
+      <div class="brand">Water Softener Shower Head</div>
+      <div class="product-name">Filters hard water at source — The hair fall fix nobody's been selling in India</div>
+      <div class="price-block">
+        <span class="price-store">₹2,800</span>
+        <span class="price-mrp">₹4,500+</span>
+        <span class="save-badge">Save 38%</span>
+      </div>
+      <div class="hook">Solves hard water damage at source. Rarely available anywhere in India.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Kitchen</span>
+      <div class="brand">Vitamix / Blendtec</div>
+      <div class="product-name">High-Performance Blender — Smoothies, soups, nut butters. Runs for years.</div>
+      <div class="price-block">
+        <span class="price-store">₹18,000</span>
+        <span class="price-mrp">₹26,000+</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Kitchen</span>
+      <div class="brand">Air Fryer</div>
+      <div class="product-name">5L Digital Air Fryer — Crispy results, a fraction of the oil, easy clean</div>
+      <div class="price-block">
+        <span class="price-store">₹4,500</span>
+        <span class="price-mrp">₹6,800+</span>
+        <span class="save-badge">Save 34%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Home Care</span>
+      <div class="brand">Garment Steamer</div>
+      <div class="product-name">Compact Clothes Steamer — Ready in 30 seconds, gentler than ironing, travel-friendly</div>
+      <div class="price-block">
+        <span class="price-store">₹2,400</span>
+        <span class="price-mrp">₹3,800+</span>
+        <span class="save-badge">Save 37%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Home Care</span>
+      <div class="brand">Robot Vacuum</div>
+      <div class="product-name">Smart Robovac — Auto-mapping, scheduled cleaning, works on all floor types</div>
+      <div class="price-block">
+        <span class="price-store">₹9,500</span>
+        <span class="price-mrp">₹14,000+</span>
+        <span class="save-badge">Save 32%</span>
+      </div>
+      <div class="hook">Set it. Forget it. Come home to clean floors.</div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Smart Home</span>
+      <div class="brand">DJI</div>
+      <div class="product-name">Osmo Pocket 3 Creator Combo — Compact 4K vlog camera, 1" sensor, stabilised</div>
+      <div class="price-block">
+        <span class="price-store">₹28,500</span>
+        <span class="price-mrp">₹38,000+</span>
+        <span class="save-badge">Save 25%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Personal Care</span>
+      <div class="brand">Philips</div>
+      <div class="product-name">OneBlade Face + Body — The hybrid trimmer for effortless grooming</div>
+      <div class="price-block">
+        <span class="price-store">₹1,800</span>
+        <span class="price-mrp">₹2,600+</span>
+        <span class="save-badge">Save 31%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Smart Home</span>
+      <div class="brand">Smart Scale</div>
+      <div class="product-name">Body Composition Analyser — Weight, body fat %, muscle mass, hydration. Syncs to your phone.</div>
+      <div class="price-block">
+        <span class="price-store">₹2,200</span>
+        <span class="price-mrp">₹3,400+</span>
+        <span class="save-badge">Save 35%</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <span class="category-tag">Toys & Education</span>
+      <div class="brand">Smartivity · Skillmatics · Hasbro</div>
+      <div class="product-name">Curated educational toys & board games — Rotating by age group and season</div>
+      <div class="price-block">
+        <span class="price-store">From ₹490</span>
+        <span class="price-mrp">30%+ savings</span>
+        <span class="save-badge">Rotating</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- TREASURE HUNT -->
+<div class="treasure-section">
+  <div class="eyebrow">How It Works</div>
+  <h2>The <em>Treasure Hunt</em> Philosophy</h2>
+  <p>At Trovia, not everything is always available. Stock rotates — products arrive, sell through, and make way for the next great find. This isn't a flaw in the design. It's the entire point.</p>
+  <div class="treasure-grid">
+    <div class="treasure-item">
+      <div class="t-icon">⟳</div>
+      <h4>Always Something New</h4>
+      <p>The store changes every few weeks. Every visit is a genuinely different experience — and a reason to come back.</p>
+    </div>
+    <div class="treasure-item">
+      <div class="t-icon">✦</div>
+      <h4>If You See It, Buy It</h4>
+      <p>When something lands, it won't be restocked identically. The best things go quickly — and the savings make it easy to act.</p>
+    </div>
+    <div class="treasure-item">
+      <div class="t-icon">◎</div>
+      <h4>Members Go First</h4>
+      <p>Trovia members get early access before every new drop. Founding members lock in their price for as long as they stay.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- MEMBERSHIP -->
+<div class="membership-section">
+  <div class="membership-left">
+    <h2>The Trovia<br><em>Founding Membership</em></h2>
+    <p>A small annual fee that pays for itself the first time you walk in. Founding members help us build this store the right way — and get the most out of it in return.</p>
+    <div class="membership-price">₹2,499 <span>/ year</span></div>
+  </div>
+  <div class="membership-right">
+    <h4>What You Get</h4>
+    <div class="benefit-item">
+      <div class="benefit-icon">◈</div>
+      <div class="benefit-text">
+        <h5>48-Hour Early Access</h5>
+        <p>First in the door before every new drop — before anyone else can enter.</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">◈</div>
+      <div class="benefit-text">
+        <h5>Extra 5% Off</h5>
+        <p>On top of already-discounted prices. Every single visit.</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">◈</div>
+      <div class="benefit-text">
+        <h5>Weekly Drop Alerts</h5>
+        <p>A WhatsApp preview each week of what's arriving — before it hits the floor.</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">◈</div>
+      <div class="benefit-text">
+        <h5>Your Price, Locked Forever</h5>
+        <p>The founding rate never increases. It's yours for life.</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">◈</div>
+      <div class="benefit-text">
+        <h5>Wish It. We'll Find It.</h5>
+        <p>Tell us what you want sourced. We'll try to bring it in on the next drop.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- COMPARISON TABLE -->
+<div class="comparison-section">
+  <div class="eyebrow">How We Compare</div>
+  <h2>Trovia vs. The Alternatives</h2>
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>What you need</th>
+        <th class="highlight-col">Trovia</th>
+        <th>Nykaa / Amazon</th>
+        <th>D-Mart / Big Bazaar</th>
+        <th>Specialty / Import Stores</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Premium international brands</td>
+        <td class="highlight-col"><span class="check">✓</span> Curated selection</td>
+        <td><span class="check">✓</span> Wide range</td>
+        <td><span class="cross">✗</span> Not stocked</td>
+        <td><span class="check">✓</span> Selective</td>
+      </tr>
+      <tr>
+        <td>Prices well below market</td>
+        <td class="highlight-col"><span class="check">✓</span> Always the lowest — we go direct to source</td>
+        <td><span class="cross">✗</span> Market price or above</td>
+        <td><span class="check">✓</span> Low, but limited range</td>
+        <td><span class="cross">✗</span> Premium pricing</td>
+      </tr>
+      <tr>
+        <td>Discovery & new finds</td>
+        <td class="highlight-col"><span class="check">✓</span> The whole point of visiting</td>
+        <td><span class="cross">✗</span> Algorithm-driven feeds</td>
+        <td><span class="cross">✗</span> Same products, always</td>
+        <td>Partial</td>
+      </tr>
+      <tr>
+        <td>Beauty, fashion, food & home in one place</td>
+        <td class="highlight-col"><span class="check">✓</span> All under one roof</td>
+        <td>Separate platforms usually</td>
+        <td>Multi, but mass market</td>
+        <td><span class="cross">✗</span> One category only</td>
+      </tr>
+      <tr>
+        <td>Someone has done the thinking for you</td>
+        <td class="highlight-col"><span class="check">✓</span> Every product hand-picked</td>
+        <td><span class="cross">✗</span> Thousands of options, no filter</td>
+        <td><span class="cross">✗</span> Volume over taste</td>
+        <td>Partially</td>
+      </tr>
+      <tr>
+        <td>A reason to go to an actual store</td>
+        <td class="highlight-col"><span class="check">✓</span> Physical, tactile, worth the trip</td>
+        <td><span class="cross">✗</span> Online-first</td>
+        <td>Functional, not inspiring</td>
+        <td>Varies</td>
+      </tr>
+      <tr>
+        <td>"If it's here, it must be good"</td>
+        <td class="highlight-col"><span class="check">✓</span> That's the promise</td>
+        <td>Dependent on reviews</td>
+        <td><span class="cross">✗</span></td>
+        <td>Varies</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <div>TROVIA <span>·</span> Concept Preview <span>·</span> Not for distribution <span>·</span> Prices indicative</div>
+</footer>
+
+</body>
+</html>
